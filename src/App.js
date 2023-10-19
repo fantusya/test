@@ -1,18 +1,34 @@
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Toaster } from 'react-hot-toast';
 
 import { GlobalStyle } from 'globalStyles/globalStyles';
 import FontStyles from 'globalStyles/fontStyles';
+
+import { RestrictedRoute } from 'components/commonComponents/RestrictedRoute';
 
 import SharedLayout from 'components/SharedLayout';
 import SignupForm from 'components/Forms/SignUpForm';
 import LoginForm from 'components/Forms/LoginForm';
 
+import { refreshUser } from 'redux/auth/operations';
+import { useAuth } from 'hooks/useAuth';
+
 const HomePage = lazy(() => import('pages/HomePage'));
 const AuthPage = lazy(() => import('pages/AuthPage'));
 
 const App = () => {
-  return (
+  const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+  return isRefreshing ? (
+    <p>FETCHING USER DATA</p>
+  ) : (
     <>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
@@ -21,13 +37,35 @@ const App = () => {
           <Route
             path="signup"
             element={
-              <AuthPage titleName="Sign Up" component={<SignupForm />} />
+              <RestrictedRoute
+                component={
+                  <AuthPage titleName="Sign Up" component={<SignupForm />} />
+                }
+                redirectTo="/"
+              />
             }
           />
+          {/* <Route
+            path="signup"
+            element={
+              <AuthPage titleName="Sign Up" component={<SignupForm />} />
+            }
+          /> */}
           <Route
             path="login"
-            element={<AuthPage titleName="Login" component={<LoginForm />} />}
+            element={
+              <RestrictedRoute
+                component={
+                  <AuthPage titleName="Login" component={<LoginForm />} />
+                }
+                redirectTo="/"
+              />
+            }
           />
+          {/* <Route
+            path="login"
+            element={<AuthPage titleName="Login" component={<LoginForm />} />}
+          /> */}
 
           {/* <Route path="/auth" element={<AuthPage />} /> */}
 
@@ -66,6 +104,7 @@ const App = () => {
         </Route>
       </Routes>
 
+      <Toaster />
       <FontStyles />
       <GlobalStyle />
     </>
