@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-scroll';
 
 import heroImg from 'images/hero/hero.png';
 import heroImgWebp from 'images/hero/hero.webp';
@@ -87,7 +88,7 @@ export const HeroText = styled.p`
   }
 `;
 
-export const HeroLink = styled.a`
+export const HeroLink = styled(Link)`
   display: inline-block;
   padding: 9px ${p => p.theme.space[4]}px;
   text-align: center;
@@ -102,6 +103,8 @@ export const HeroLink = styled.a`
 
   border: ${p => p.theme.borders.normal} ${p => p.theme.colors.white};
   border-radius: ${p => p.theme.radii.hero};
+
+  cursor: pointer;
 
   transition: color ${p => p.theme.transition.main},
     background-color ${p => p.theme.transition.main},
