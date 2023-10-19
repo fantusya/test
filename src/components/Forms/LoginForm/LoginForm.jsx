@@ -1,4 +1,7 @@
 import { Formik } from 'formik';
+import { useDispatch } from 'react-redux';
+
+import { logIn } from 'redux/auth/operations';
 import { loginValidationSchema } from 'helpers/validationSchemas';
 
 import RouteFormLoginSignUp from 'components/commonComponents/RouteFormLoginSignUp';
@@ -16,8 +19,13 @@ import {
 } from 'components/commonComponents/FormsStyles/AuthForm.styled';
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
+
   const handleSubmit = ({ email, password }, { resetForm }) => {
-    //   dispatch(signup({ email, password }));
+    console.log('email', email);
+    console.log('password', password);
+    dispatch(logIn({ email, password }));
+
     resetForm();
   };
   return (

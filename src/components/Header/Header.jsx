@@ -1,30 +1,29 @@
 import { Container } from 'globalStyles/globalStyles';
 import { Box } from 'components/Box/Box';
 
-import { HeaderEl, StyledLink } from './Header.styled';
+import { useAuth } from 'hooks/useAuth';
+
+import Logo from 'components/commonComponents/Logo';
+import AuthNav from 'components/AuthNav';
+import UserMenu from 'components/UserMenu';
+import { HeaderEl } from './Header.styled';
 
 const Header = () => {
+  const { isLoggedIn } = useAuth();
+
   return (
     <HeaderEl>
       <Container>
-        <nav>
-          <Box
-            as="ul"
-            display="flex"
-            gridGap="10px"
-            justifyContent="flex-end"
-            alignItems="center"
-          >
-            <li>
-              <StyledLink to="/login">Login</StyledLink>
-            </li>
-            <li>
-              <StyledLink $primary to="/signup">
-                Sign Up
-              </StyledLink>
-            </li>
-          </Box>
-        </nav>
+        <Box
+          as="nav"
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
+        >
+          <Logo />
+
+          {isLoggedIn ? <UserMenu /> : <AuthNav />}
+        </Box>
       </Container>
     </HeaderEl>
   );

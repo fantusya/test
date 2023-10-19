@@ -17,7 +17,9 @@ const Hero = () => {
           </HeroText>
         </Box>
 
-        <HeroLink href="#deals">Get Started</HeroLink>
+        <HeroLink to="deals" smooth={true} duration={1000}>
+          Get Started
+        </HeroLink>
       </Container>
     </HeroSection>
   );
