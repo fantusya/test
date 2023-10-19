@@ -1,31 +1,29 @@
 import * as Yup from 'yup';
 
+const nameRegex = /^[a-zA-Z]+$/;
+const emailRegex = /^[^а-яА-ЯёЁ!#$%*/?^`+&{|}~]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+
 export const signUpValidationSchema = Yup.object({
   name: Yup.string()
-    .matches(
-      /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
-      'Only letters are allowed'
-    )
-    .min(2, 'At least 2 symbols')
+    .matches(nameRegex, 'Only letters are allowed')
+    .min(1, 'At least 2 symbols')
     .max(30, 'Maximum 30 symbols')
     .required('Required field'),
   email: Yup.string()
-    .email('Invalid email pattern')
-    .min(6, 'At least 6 symbols')
+    .matches(emailRegex, 'Invalid email')
+    .min(5, 'At least 5 symbols')
     .required('Required field'),
   password: Yup.string()
-    .min(7, 'At least 7 symbols')
-    .max(30, 'Maximum 30 symbols')
+    .min(6, 'At least 6 symbols')
     .required('Required field'),
 });
 
 export const loginValidationSchema = Yup.object({
   email: Yup.string()
-    .email('Not valid email pattern')
-    .min(6, 'At least 6 symbols')
+    .matches(emailRegex, 'Invalid email')
+    .min(5, 'At least 5 symbols')
     .required('Required field'),
   password: Yup.string()
-    // .min(7, 'At least 7 symbols')
-    .max(30, 'Maximum 30 symbols')
+    .min(6, 'At least 6 symbols')
     .required('Required field'),
 });
