@@ -60,7 +60,6 @@ const authSlice = createSlice({
           logIn.pending,
           logOut.pending,
           refreshUser.pending
-          // confirmEmail.pending
         ),
         handlePending
       )

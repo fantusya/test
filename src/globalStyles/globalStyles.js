@@ -28,6 +28,10 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
+
+  input{
+    outline: ${p => p.theme.borders.normal} ${p => p.theme.colors.accent};
+  }
 `;
 
 export const Container = styled.div`
@@ -36,7 +40,6 @@ export const Container = styled.div`
 
   /* outline: 1px solid red; */
 
-  /* width: ${p => (p.header ? '100%' : p.theme.breakpoints[0])}; */
   padding: 0 20px;
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {

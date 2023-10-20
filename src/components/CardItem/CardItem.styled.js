@@ -11,7 +11,6 @@ export const CardWrapper = styled.div`
 export const CardImg = styled.img`
   display: block;
   max-width: 100%;
-  /* width: 100%; */
   height: auto;
   object-fit: cover;
 

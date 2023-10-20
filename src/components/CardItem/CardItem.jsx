@@ -17,7 +17,7 @@ const CardItem = ({ deal }) => {
         <CardsList>
           <CardLi>
             <CardItemText>
-              {deal.price} {deal.currency}
+              {deal.price.toLocaleString()} {deal.currency}
             </CardItemText>
           </CardLi>
           <CardLi>
@@ -28,7 +28,7 @@ const CardItem = ({ deal }) => {
           </CardLi>
           <CardLi>
             <CardItemText>
-              Ticket - {deal.ticket} {deal.currency}
+              Ticket - {deal.ticket.toLocaleString()} {deal.currency}
             </CardItemText>
           </CardLi>
           <CardLi>

@@ -19,10 +19,6 @@ export const StyledLink = styled(NavLink)`
 
   cursor: pointer;
 
-  /* &.active {
-    color: orange;
-  } */
-
   &:hover,
   &:focus {
     color: ${p => p.theme.colors.white};

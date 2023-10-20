@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { Box } from 'components/Box/Box';
-import { FormLabel, Input, Button } from './ForgotPassword.styled';
-import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
-import { emailRegex } from 'helpers/validationSchemas.js';
+
+import { Box } from 'components/Box/Box';
+import toast from 'react-hot-toast';
+
+import { FormLabel, Input, Button } from './ForgotPassword.styled';
 import { confirmEmail, changePassword } from 'redux/auth/operations';
 
 const ForgotPassword = ({ onShow }) => {
@@ -90,7 +91,6 @@ const ForgotPassword = ({ onShow }) => {
             value={email}
             placeholder="Email"
             minlength="5"
-            pattern="^[^а-яА-ЯёЁ!#$%*/?^`+&{|}~]+@[a-z0-9.-]+\.[a-z]{2,}$"
           />
           <Button type="submit">Submit</Button>
         </Box>

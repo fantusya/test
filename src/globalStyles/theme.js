@@ -33,7 +33,6 @@ const theme = {
   ],
   fontWeights: {
     normal: 400,
-    // medium: 500,
     semiBold: 600,
     bold: 700,
   },
@@ -45,11 +44,7 @@ const theme = {
     l: 1.5,
     xl: 1.7,
   },
-  //   letterSpacing: {
-  //     logo: '0.07em',
-  //     text: '0.04em',
-  //     title: '-0.01em',
-  //   },
+
   borders: {
     none: 'none',
     normal: '1px solid',
@@ -60,12 +55,8 @@ const theme = {
     none: '0',
     main: '5px',
     hero: '8px',
-    // circular: '50%',
   },
-  //   shadows: {
-  //     section: '7px 4px 14px rgba(0, 0, 0, 0.11)',
-  //     avatar: '0px 4px 14px rgba(0, 0, 0, 0.11)',
-  //   },
+
   transition: {
     main: '400ms ease',
   },

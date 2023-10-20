@@ -24,15 +24,7 @@ export const ModalContent = styled.div`
   border: ${p => p.theme.borders.white} ${p => p.theme.colors.header};
   border-radius: ${p => p.theme.radii.main};
 
-  /* max-height: 600px;
-  max-width: 900px;
-  width: 100%; 
-  /* width: 100px;
-  height: 100px; */
-  background-color: white;
-
-  /* max-width: calc(100vw - 48px);
-  max-height: calc(100vh - 24px); */
+  background-color: ${p => p.theme.colors.white};
 
   @media (min-width: ${p => p.theme.breakpoints[1]}) {
     max-width: 420px;

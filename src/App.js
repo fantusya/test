@@ -1,7 +1,7 @@
 import { lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import toast, { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 
 import { GlobalStyle } from 'globalStyles/globalStyles';
 import FontStyles from 'globalStyles/fontStyles';
@@ -47,12 +47,7 @@ const App = () => {
               />
             }
           />
-          {/* <Route
-            path="signup"
-            element={
-              <AuthPage titleName="Sign Up" component={<SignupForm />} />
-            }
-          /> */}
+
           <Route
             path="login"
             element={
@@ -64,43 +59,6 @@ const App = () => {
               />
             }
           />
-          {/* <Route
-            path="login"
-            element={<AuthPage titleName="Login" component={<LoginForm />} />}
-          /> */}
-
-          {/* <Route path="/auth" element={<AuthPage />} /> */}
-
-          {/* <Route
-            path="register"
-            element={
-              <RestrictedRouteRegister
-                successRegister={<Message />}
-                failedOrNotRegistered={
-                  <AuthPage
-                    titleName="registration"
-                    formName="Registration form"
-                    component={<RegisterForm />}
-                  />
-                }
-              />
-            }
-          />
-          <Route
-            path="login"
-            element={
-              <RestrictedRoute
-                redirectTo="/contacts"
-                component={
-                  <AuthPage
-                    titleName="login"
-                    formName="Login form"
-                    component={<LoginForm />}
-                  />
-                }
-              />
-            }
-          /> */}
 
           <Route path="*" element={<NotFound />} />
         </Route>
