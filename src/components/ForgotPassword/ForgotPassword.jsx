@@ -25,7 +25,7 @@ const ForgotPassword = ({ onShow }) => {
     const { error, payload } = await dispatch(confirmEmail({ email }));
 
     if (error) {
-      toast.error(payload.message);
+      toast.error(payload.response.data.message);
     } else {
       setIsEmailConfirmed(true);
     }
@@ -44,7 +44,7 @@ const ForgotPassword = ({ onShow }) => {
     );
 
     if (error) {
-      toast.error(payload.message);
+      toast.error(payload.response.data.message);
     } else {
       toast.success('Password was changed');
       onShow(false);

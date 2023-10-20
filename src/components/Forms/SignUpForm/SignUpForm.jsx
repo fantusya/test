@@ -27,13 +27,13 @@ const SignUpForm = () => {
     );
 
     if (errorSignUp) {
-      toast.error(payload.message);
+      toast.error(payload.response.data.message);
     } else {
       const { error: errorLogIn, payload } = await dispatch(
         logIn({ email, password })
       );
       if (errorLogIn) {
-        toast.error(payload.message);
+        toast.error(payload.response.data.message);
       }
     }
 

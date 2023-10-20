@@ -12,7 +12,7 @@ const UserMenu = () => {
     const { error, payload } = await dispatch(logOut());
 
     if (error) {
-      toast.error(payload.message);
+      toast.error(payload.response.data.message);
     }
   };
 

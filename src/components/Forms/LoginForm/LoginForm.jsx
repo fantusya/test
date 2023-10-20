@@ -30,7 +30,7 @@ const LoginForm = () => {
   const handleSubmit = async ({ email, password }, { resetForm }) => {
     const { error, payload } = await dispatch(logIn({ email, password }));
     if (error) {
-      toast.error(payload.message);
+      toast.error(payload.response.data.message);
     }
     resetForm();
   };
