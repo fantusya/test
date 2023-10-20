@@ -17,6 +17,8 @@ export const StyledLink = styled(NavLink)`
   border: ${p => p.theme.borders.normal} ${p => p.theme.colors.accent};
   border-radius: ${p => p.theme.radii.main};
 
+  cursor: pointer;
+
   /* &.active {
     color: orange;
   } */

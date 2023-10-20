@@ -91,7 +91,7 @@ export const ErrorMessage = styled(FormikErrorMessage)`
   color: ${p => p.theme.colors.error};
 `;
 
-export const ForgotPass = styled.p`
+export const ForgotPass = styled.button`
   margin-bottom: 30px;
   text-align: end;
 
@@ -100,6 +100,9 @@ export const ForgotPass = styled.p`
   font-weight: ${p => p.theme.fontWeights.semiBold};
 
   color: ${p => p.theme.colors.mainBg};
+  background-color: ${p => p.theme.colors.transparent};
+
+  border: ${p => p.theme.borders.none};
 
   cursor: pointer;
 
