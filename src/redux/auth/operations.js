@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'http://localhost:3033';
-// axios.defaults.baseURL = 'https://test-back-rzeu.onrender.com';
+// axios.defaults.baseURL = 'http://localhost:3000';
+axios.defaults.baseURL = 'https://test-back-rzeu.onrender.com';
 
 // Utility to add JWT
 const setAuthHeader = token => {
