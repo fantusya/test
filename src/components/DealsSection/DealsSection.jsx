@@ -9,13 +9,7 @@ import { DealsTitle } from './DealsSection.styled';
 
 import Refreshing from 'components/Refreshing';
 import NotFound from 'components/NotFound';
-
-const Status = {
-  pending: 'pending',
-  resolved: 'resolved',
-  rejected: 'rejected',
-  idle: 'idle',
-};
+import { Status } from 'constants/stateMachine';
 
 const DealsSection = () => {
   const [deals, setDeals] = useState([]);
