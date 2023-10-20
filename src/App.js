@@ -1,16 +1,18 @@
 import { lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 
 import { GlobalStyle } from 'globalStyles/globalStyles';
 import FontStyles from 'globalStyles/fontStyles';
 
 import { RestrictedRoute } from 'components/commonComponents/RestrictedRoute';
 
+import Refreshing from 'components/Refreshing';
 import SharedLayout from 'components/SharedLayout';
 import SignupForm from 'components/Forms/SignUpForm';
 import LoginForm from 'components/Forms/LoginForm';
+import NotFound from 'components/NotFound';
 
 import { refreshUser } from 'redux/auth/operations';
 import { useAuth } from 'hooks/useAuth';
@@ -27,7 +29,7 @@ const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <p>FETCHING USER DATA</p>
+    <Refreshing />
   ) : (
     <>
       <Routes>
@@ -100,11 +102,11 @@ const App = () => {
             }
           /> */}
 
-          {/* <Route path="*" element={<NotFound />} /> */}
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
 
-      <Toaster />
+      <Toaster position="top-right" />
       <FontStyles />
       <GlobalStyle />
     </>

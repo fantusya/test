@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-// axios.defaults.baseURL = 'http://localhost:3033';
-axios.defaults.baseURL = 'https://test-back-rzeu.onrender.com';
+axios.defaults.baseURL = 'http://localhost:3033';
+// axios.defaults.baseURL = 'https://test-back-rzeu.onrender.com';
 
 // Utility to add JWT
 const setAuthHeader = token => {
@@ -25,7 +25,7 @@ export const signUp = createAsyncThunk(
       const res = await axios.post('/api/auth/signup', credentials);
       console.log('RES SIGNUP', res.data);
       // After successful registration, add the token to the HTTP header
-      setAuthHeader(res.data.token);
+      // setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
       //   console.log('error from SIGNUP', error.response.data.message);
@@ -107,6 +107,44 @@ export const refreshUser = createAsyncThunk(
       return res.data;
     } catch (error) {
       console.log('error from REFRESH', error.response.data.message);
+      const obj = {
+        message: error.response.data.message,
+        statusCode: error.response.status,
+      };
+      return thunkAPI.rejectWithValue(obj);
+    }
+  }
+);
+
+export const confirmEmail = createAsyncThunk(
+  'auth/confirmEmail',
+  async (credentials, thunkAPI) => {
+    try {
+      const res = await axios.post('/api/auth/confirmEmail', credentials);
+      console.log('RES confirmEmail', res.data);
+      // After successful login, add the token to the HTTP header
+      return res.data;
+    } catch (error) {
+      console.log('error from confirmEmail', error.response.data.message);
+      const obj = {
+        message: error.response.data.message,
+        statusCode: error.response.status,
+      };
+      return thunkAPI.rejectWithValue(obj);
+    }
+  }
+);
+
+export const changePassword = createAsyncThunk(
+  'auth/changePassword',
+  async (credentials, thunkAPI) => {
+    try {
+      const res = await axios.post('/api/auth/changePassword', credentials);
+      console.log('RES changePassword', res.data);
+      // After successful login, add the token to the HTTP header
+      return res.data;
+    } catch (error) {
+      console.log('error from changePassword', error.response.data.message);
       const obj = {
         message: error.response.data.message,
         statusCode: error.response.status,
