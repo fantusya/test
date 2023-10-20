@@ -30,7 +30,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   input{
-    outline: ${p => p.theme.borders.normal} ${p => p.theme.colors.accent};
+    outline: ${p => p.theme.borders.normal} ${p => p.theme.colors.transparent};
   }
 `;
 
