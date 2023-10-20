@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { signUp, logIn } from 'redux/auth/operations';
 import { Formik } from 'formik';
+import toast from 'react-hot-toast';
 import { signUpValidationSchema } from 'helpers/validationSchemas';
 
 import RouteFormLoginSignUp from 'components/commonComponents/RouteFormLoginSignUp';
@@ -20,15 +21,19 @@ const SignUpForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = async ({ name, email, password }, { resetForm }) => {
-    console.log('name', name);
-    console.log('email', email);
-    console.log('password', password);
-    try {
-      const a = await dispatch(signUp({ name, email, password }));
-      await dispatch(logIn({ email, password }));
-      console.log('dispatch(signUp({ name, email, password }))', a);
-    } catch (error) {
-      console.log('error', error);
+    const { error: errorSignUp, payload } = await dispatch(
+      signUp({ name, email, password })
+    );
+
+    if (errorSignUp) {
+      toast.error(payload.message);
+    } else {
+      const { error: errorLogIn, payload } = await dispatch(
+        logIn({ email, password })
+      );
+      if (errorLogIn) {
+        toast.error(payload.message);
+      }
     }
 
     resetForm();

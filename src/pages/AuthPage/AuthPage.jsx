@@ -7,20 +7,22 @@ import { AuthSection, FormContainer } from './AuthPage.styled';
 const AuthPage = ({ component: Component }) => {
   const { error } = useAuth();
 
-  useEffect(() => {
-    if (error.statusCode) {
-      console.log('ERROR');
-      toast(error.message);
-    }
-  }, [error]);
+  // useEffect(() => {
+  //   // toast(error?.statusCode);
+
+  //   // if (error?.statusCode) {
+  //   //   console.log('ERROR');
+  //   //   toast(error?.message);
+  //   // }
+  // }, [error]);
 
   return (
-    <Box as="main" height="100vh">
+    <Box height="100vh">
       <AuthSection>
         <FormContainer>{Component}</FormContainer>
       </AuthSection>
     </Box>
-    // <Box as="main" display="flex">
+    // <Box display="flex">
     //   <Diva></Diva>
     //   {/* <AuthSection> */}
     //   <FormContainer>

@@ -4,11 +4,11 @@ import Footer from 'components/Footer';
 
 const HomePage = () => {
   return (
-    <main>
+    <>
       <Hero />
       <DealsSection />
       <Footer />
-    </main>
+    </>
   );
 };
 
