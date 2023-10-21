@@ -11,6 +11,7 @@ export const Icon = styled(BsBuildingsFill)`
 `;
 
 export const LogoLink = styled.a`
+  display: inline-block;
   width: 30px;
   height: 30px;
 
