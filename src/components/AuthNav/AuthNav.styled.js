@@ -1,5 +1,30 @@
 import styled, { css } from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { PiArrowBendDownRightBold } from 'react-icons/pi';
+
+export const LinkList = styled.ul`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+
+  ${props =>
+    props.$burger &&
+    css`
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+    `}
+`;
+
+export const LinkLi = styled.li`
+  ${props =>
+    props.$burger &&
+    css`
+      display: flex;
+      gap: ${p => p.theme.space[4]}px;
+    `}
+`;
 
 export const StyledLink = styled(NavLink)`
   display: inline-block;
@@ -49,4 +74,18 @@ export const StyledLink = styled(NavLink)`
   @media (min-width: ${p => p.theme.breakpoints[2]}) {
     font-size: ${p => p.theme.fontSizes[2]};
   }
+
+  ${props =>
+    props.$burger &&
+    css`
+      color: ${p => p.theme.colors.white};
+      background-color: ${p => p.theme.colors.accent};
+    `}
+`;
+
+export const Icon = styled(PiArrowBendDownRightBold)`
+  width: 30px;
+  height: 30px;
+
+  color: ${p => p.theme.colors.accent};
 `;
