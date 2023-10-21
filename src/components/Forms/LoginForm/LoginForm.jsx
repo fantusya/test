@@ -9,6 +9,7 @@ import { loginValidationSchema } from 'helpers/validationSchemas';
 import { Box } from 'components/Box/Box';
 import RouteFormLoginSignUp from 'components/commonComponents/RouteFormLoginSignUp';
 import Modal from 'components/commonComponents/Modal';
+import { ModalContent } from 'components/commonComponents/Modal/Modal.styled';
 import ForgotPassword from 'components/ForgotPassword';
 import {
   Form,
@@ -84,7 +85,9 @@ const LoginForm = () => {
       </Formik>
       {showModal && (
         <Modal onClose={() => setShowModal(!showModal)}>
-          <ForgotPassword onShow={a => setShowModal(a)} />
+          <ModalContent>
+            <ForgotPassword onShow={a => setShowModal(a)} />
+          </ModalContent>
         </Modal>
       )}
     </>

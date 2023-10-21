@@ -1,7 +1,7 @@
 import { createPortal } from 'react-dom';
 import { useEffect } from 'react';
 
-import { ModalBackdrop, ModalContent } from './Modal.styled';
+import { ModalBackdrop } from './Modal.styled';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -19,12 +19,18 @@ const Modal = ({ onClose, children }) => {
   }, [onClose]);
 
   const handleBackdropClick = e => {
-    if (e.currentTarget === e.target) onClose();
+    if (e.currentTarget === e.target || e.target.nodeName === 'A') onClose();
   };
 
   return createPortal(
-    <ModalBackdrop onClick={handleBackdropClick}>
-      <ModalContent>{children}</ModalContent>
+    <ModalBackdrop
+      initial={{ opacity: 0, y: '-100%' }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: '-100%' }}
+      transition={{ duration: 0.5 }}
+      onClick={handleBackdropClick}
+    >
+      {children}
     </ModalBackdrop>,
     modalRoot
   );

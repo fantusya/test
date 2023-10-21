@@ -1,25 +1,19 @@
-import { Box } from 'components/Box/Box';
+import { LinkList, StyledLink, LinkLi, Icon } from './AuthNav.styled';
 
-import { StyledLink } from './AuthNav.styled';
-
-const AuthNav = () => {
+const AuthNav = ({ $burger }) => {
   return (
-    <Box
-      as="ul"
-      display="flex"
-      gridGap="10px"
-      justifyContent="flex-end"
-      alignItems="center"
-    >
-      <li>
+    <LinkList $burger={$burger}>
+      <LinkLi $burger={$burger}>
+        {$burger && <Icon />}
         <StyledLink to="/login">Login</StyledLink>
-      </li>
-      <li>
+      </LinkLi>
+      <LinkLi $burger={$burger}>
+        {$burger && <Icon />}
         <StyledLink $primary to="/signup">
           Sign Up
         </StyledLink>
-      </li>
-    </Box>
+      </LinkLi>
+    </LinkList>
   );
 };
 

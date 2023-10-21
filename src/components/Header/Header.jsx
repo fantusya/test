@@ -1,16 +1,12 @@
 import { Container } from 'globalStyles/globalStyles';
 import { Box } from 'components/Box/Box';
 
-import { useAuth } from 'hooks/useAuth';
-
+import Navigation from 'components/Navigation';
 import Logo from 'components/commonComponents/Logo';
-import AuthNav from 'components/AuthNav';
-import UserMenu from 'components/UserMenu';
+
 import { HeaderEl } from './Header.styled';
 
 const Header = () => {
-  const { isLoggedIn } = useAuth();
-
   return (
     <HeaderEl>
       <Container>
@@ -21,8 +17,7 @@ const Header = () => {
           alignItems="center"
         >
           <Logo />
-
-          {isLoggedIn ? <UserMenu /> : <AuthNav />}
+          <Navigation />
         </Box>
       </Container>
     </HeaderEl>
